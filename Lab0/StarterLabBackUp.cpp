@@ -8,6 +8,7 @@
 #include <cstring> // c library
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "MemTracker.h"
 
 #pragma warning(disable:4996)
@@ -250,9 +251,13 @@ struct Passenger
 		strcat(gbuffer,pfirst);
 		strcat(gbuffer,COMMA);
 
-	    string s = to_string(row);
-	    char const *pchar = s.c_str();
+        stringstream strs;
+		strs << row;
+		string temp_str = strs.str();
+	    char const *pchar = temp_str.c_str();
 		strcat(gbuffer, pchar);
+        
+        
 		int slength = strlen(gbuffer);
 		gbuffer[slength] = seatno;
 		gbuffer[slength+1] = NULL;
